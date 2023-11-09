@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculadora</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="controle.js"></script>
+    </head>
+    <body>
+        <div class="tudo">
+            <div class="display">
+                <p id="displayTexto"></p>
+            </div>
+            <br>
+            <div class="teclas">
+                <button class="botaoEspecialMemoria" onclick="memoryClear();">MC</button>
+                <button class="botaoEspecialMemoria" onclick="memoryAdd();">M+</button>
+                <button class="botaoEspecialMemoria" onclick="memorySub();">M-</button>
+                <button class="botaoEspecialMemoria" onclick="memoryRead();">MR</button><br>
+                <button class="botaoEspecial" onclick="ac();">C</button>
+                <button class="botaoEspecial" onclick="maisMenos();" id="%">&#177;</button>
+                <button class="botaoEspecial" style="font-weight: bold;" onclick="divisao();" id="/">&#247;</button><br>
+                <button class="botao" onclick="numero(7);">7</button>
+                <button class="botao" onclick="numero(8);">8</button>
+                <button class="botao" onclick="numero(9);">9</button>
+                <button class="botaoEspecial" onclick="multiplicacao();" id="x">x</button><br>
+                <button class="botao" onclick="numero(4);">4</button>
+                <button class="botao" onclick="numero(5);">5</button>
+                <button class="botao" onclick="numero(6);">6</button>
+                <button class="botaoEspecial" onclick="subtracao();" id="-">-</button><br>
+                <button class="botao" onclick="numero(1);">1</button>
+                <button class="botao" onclick="numero(2);">2</button>
+                <button class="botao" onclick="numero(3);">3</button>
+                <button class="botaoEspecial" onclick="soma();" id="+">+</button><br>
+                <button class="botao" style="width: 74px;" onclick="numero(0);">0</button>
+                <button class="botao" onclick = "ponto();">.</button>
+                <button class="botaoEspecial" onclick="igual();">=</button>
+            </div>
+        </div>
+    </body>
+</html>
