@@ -4,44 +4,44 @@ var displayTexto = "";
 var op = "";
 var memoria = 0;
 
-function memoryAdd(){
+function memoryAdd() {
     num1 = document.getElementById("displayTexto").innerHTML
-    memoria = parseFloat(num1) + parseFloat(memoria) 
+    memoria = parseFloat(num1) + parseFloat(memoria)
     ac();
-    alert("Valor da memoria: "+memoria);
+    alert("Valor da memoria: " + memoria);
 }
 
-function memorySub(){
+function memorySub() {
     num1 = document.getElementById("displayTexto").innerHTML
     memoria = parseFloat(memoria) - parseFloat(num1)
     ac();
-    alert("Valor da memoria: "+memoria);
+    alert("Valor da memoria: " + memoria);
 }
 
-function memoryClear(){
+function memoryClear() {
     memoria = 0;
     ac();
     alert("Memoria limpa: " + memoria)
 }
 
-function memoryRead(){
+function memoryRead() {
     document.getElementById("displayTexto").innerHTML = memoria;
 }
 
-function numero(num){
+function numero(num) {
     var texto = document.getElementById("displayTexto");
     displayTexto += num
     texto.innerHTML = displayTexto;
 }
 
-function ac(){
+function ac() {
     displayTexto = ""
     document.getElementById("displayTexto").innerHTML = displayTexto;
     num1 = ""
     num2 = ""
 }
 
-function divisao(){
+function divisao() {
     num1 = document.getElementById("displayTexto").innerHTML
     displayTexto = ""
     document.getElementById("displayTexto").innerHTML = num1;
@@ -49,7 +49,7 @@ function divisao(){
     document.getElementById("/").style.backgroundColor = "red";
 }
 
-function multiplicacao(){
+function multiplicacao() {
     num1 = document.getElementById("displayTexto").innerHTML
     displayTexto = ""
     document.getElementById("displayTexto").innerHTML = num1;
@@ -57,7 +57,7 @@ function multiplicacao(){
     document.getElementById("x").style.backgroundColor = "red";
 }
 
-function soma(){
+function soma() {
     num1 = document.getElementById("displayTexto").innerHTML
     displayTexto = ""
     document.getElementById("displayTexto").innerHTML = num1;
@@ -65,7 +65,7 @@ function soma(){
     document.getElementById("+").style.backgroundColor = "red";
 }
 
-function subtracao(){
+function subtracao() {
     num1 = document.getElementById("displayTexto").innerHTML
     displayTexto = ""
     document.getElementById("displayTexto").innerHTML = num1;
@@ -73,36 +73,82 @@ function subtracao(){
     document.getElementById("-").style.backgroundColor = "red";
 }
 
-function maisMenos(){
+function maisMenos() {
     num1 = document.getElementById("displayTexto").innerHTML
-    num1 = num1*(-1)
+    num1 = num1 * (-1)
     document.getElementById("displayTexto").innerHTML = num1
 }
 
-function ponto(){
+function ponto() {
     displayTexto += "."
     document.getElementById("displayTexto").innerHTML = displayTexto
 }
 
-function igual(){
-    if(op != ""){
+function igual() {
+    if (op != "") {
         num2 = displayTexto
-        if(op == "/"){
-            document.getElementById("displayTexto").innerHTML = num1/num2 
+        if (op == "/") {
+            document.getElementById("displayTexto").innerHTML = num1 / num2
             document.getElementById("/").style.backgroundColor = "lightsalmon";
         }
-        if(op == "*"){
-            document.getElementById("displayTexto").innerHTML = num1*num2 
+        if (op == "*") {
+            document.getElementById("displayTexto").innerHTML = num1 * num2
             document.getElementById("x").style.backgroundColor = "lightsalmon";
         }
-        if(op == "-"){
-            document.getElementById("displayTexto").innerHTML = num1-num2 
+        if (op == "-") {
+            document.getElementById("displayTexto").innerHTML = num1 - num2
             document.getElementById("-").style.backgroundColor = "lightsalmon";
         }
-        if(op == "+"){
-            document.getElementById("displayTexto").innerHTML = parseFloat(num1) + parseFloat(num2) 
+        if (op == "+") {
+            document.getElementById("displayTexto").innerHTML = parseFloat(num1) + parseFloat(num2)
             document.getElementById("+").style.backgroundColor = "lightsalmon";
         }
     }
     num1 = document.getElementById("displayTexto").innerHTML
 }
+
+document.addEventListener('keydown', function(event) {
+    const teclaPressionada = event.key;
+
+    if (!isNaN(teclaPressionada) && teclaPressionada !== ' ') {
+        numero(parseInt(teclaPressionada));
+    } else {
+        switch (teclaPressionada) {
+            case '+':
+                soma();
+                break;
+            case '-':
+                subtracao();
+                break;
+            case '*':
+                multiplicacao();
+                break;
+            case '/':
+                divisao();
+                break;
+            case 'w':
+                memoryAdd();
+                break;
+            case 'e':
+                memorySub();
+                break;
+            case 'r':
+                memoryRead();
+                break;
+            case 'c':
+                ac();
+                break;
+            case '.':
+                ponto();
+                break;
+            case 'Enter':
+                igual();
+                break;
+            case '=':
+                igual();
+                break;
+            default:
+                break;
+        }
+    }
+});
